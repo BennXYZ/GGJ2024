@@ -16,7 +16,7 @@ class GameManager : MonoBehaviour
     public DebugUtils DebugUtils { get; private set; }
     public LevelRoot CurrentLevel { get; internal set; }
 
-    [RuntimeInitializeOnLoadMethod]
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     static void Initialize()
     {
         instance = new GameObject().AddComponent<GameManager>();

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 187849954887100107}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52,14 +52,11 @@ MonoBehaviour:
   cameraMovementSpeed: 2
   movementSpeed: 5
   acceleration: 100
-  jumpForce: 5
-  fallForce: 10
+  jumpForce: 3
   maxLowerCameraAngle: -70
   maxHigherCameraAngle: 50
   rigidbody: {fileID: 0}
   cameraHolder: {fileID: 0}
-  gravity: 0
-  jumpDetectionOffset: {x: 0, y: -0.99, z: 0}
 --- !u!33 &6570936848972155828
 MeshFilter:
   m_ObjectHideFlags: 0
