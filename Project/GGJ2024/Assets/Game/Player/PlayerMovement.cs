@@ -8,12 +8,15 @@ public class PlayerMovement : LevelObject
     public float movementSpeed;
     public float acceleration;
     public float jumpForce;
+    public float fallForce;
     public float maxLowerCameraAngle;
     public float maxHigherCameraAngle;
     public Rigidbody rigidbody;
     public Transform cameraHolder;
+    public float gravity;
 
     Vector2 currentNormalizedSpeed;
+    public Vector3 jumpDetectionOffset;
 
     private void Awake()
     {
@@ -30,13 +33,21 @@ public class PlayerMovement : LevelObject
         Cursor.visible = false;
     }
 
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawLine(transform.position + jumpDetectionOffset, transform.position + jumpDetectionOffset + Vector3.down * 0.05f);
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Jump"))
+        if(Physics.Raycast(transform.position + jumpDetectionOffset, Vector3.down, 0.05f))
+            if (Input.GetButtonDown("Jump"))
             rigidbody.AddForce(Vector3.up * 100 * jumpForce);
+        rigidbody.AddForce(Vector3.down * fallForce);
 
-        if(acceleration != 0)
+        if (acceleration != 0)
         {
             if (currentNormalizedSpeed.x > Input.GetAxis("Horizontal"))
                 currentNormalizedSpeed.x = Mathf.Max(currentNormalizedSpeed.x - acceleration * Time.deltaTime, Input.GetAxis("Horizontal"));
