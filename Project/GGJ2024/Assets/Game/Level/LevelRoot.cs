@@ -19,7 +19,7 @@ public class LevelRoot : MonoBehaviour
             OnCoinCollectionGoalReached.Invoke();
     }
 
-    private void Start()
+    private void Awake()
     {
         GameManager.Instance.CurrentLevel = this;
     }
