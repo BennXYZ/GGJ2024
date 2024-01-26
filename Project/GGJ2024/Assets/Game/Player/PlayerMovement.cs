@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : LevelObject
+public class PlayerMovement : PlayerComponent
 {
     public float cameraMovementSpeed;
     public float movementSpeed;
@@ -23,13 +23,10 @@ public class PlayerMovement : LevelObject
     }
 
     // Start is called before the first frame update
-    protected override void Start()
+    protected void Start()
     {
-        base.Start();
         //Debugging for me
         Cursor.visible = false;
-
-        Level.Player = transform;
     }
 
     // Update is called once per frame

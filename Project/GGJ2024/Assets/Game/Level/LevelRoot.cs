@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +13,20 @@ public class LevelRoot : MonoBehaviour
 
     public UnityEvent OnCoinCollectionGoalReached;
 
-    public Transform Player { get; set; }
+    public List<EnemyBase> Enemies { get; } = new List<EnemyBase>();
+
+    public void AddEnemy(EnemyBase enemyBase)
+    {
+        if (!Enemies.Contains(enemyBase))
+            Enemies.Add(enemyBase);
+    }
+
+    public void RemoveEnemy(EnemyBase enemyBase)
+    {
+        Enemies.Remove(enemyBase);
+    }
+
+    public PlayerController Player { get; set; }
 
     public void AddCoins(int count = 1)
     {

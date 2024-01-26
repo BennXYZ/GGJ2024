@@ -12,8 +12,16 @@ public class EnemyBase : LevelObject, IGasReceiver
     {
         base.Start();
 
+        Level.AddEnemy(this);
+
         Agent = GetComponent<NavMeshAgent>();
-        Agent.SetDestination(Level.Player.position);
+        Agent.SetDestination(Level.Player.transform.position);
+    }
+
+    private void OnDestroy()
+    {
+        if (Level != null)
+            Level.RemoveEnemy(this);
     }
 
     public void EnteredGasArea(GasArea gasArea)
