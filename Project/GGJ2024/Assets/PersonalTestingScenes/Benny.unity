@@ -1529,6 +1529,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3035522856016342420, guid: 6223834d2a8cbe143847eca73ab0a185,
+        type: 3}
+      propertyPath: jumpDecetionRange
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3035522856016342420, guid: 6223834d2a8cbe143847eca73ab0a185,
+        type: 3}
+      propertyPath: groundedCheckCount
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3035522856016342420, guid: 6223834d2a8cbe143847eca73ab0a185,
+        type: 3}
+      propertyPath: jumpDetectionRange
+      value: 1.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 3035522856016342420, guid: 6223834d2a8cbe143847eca73ab0a185,
+        type: 3}
+      propertyPath: jumpDetectionRadius
+      value: 0.49
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

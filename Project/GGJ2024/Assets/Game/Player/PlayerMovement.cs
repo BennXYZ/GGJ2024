@@ -16,7 +16,11 @@ public class PlayerMovement : LevelObject
     public float gravity;
 
     Vector2 currentNormalizedSpeed;
-    public Vector3 jumpDetectionOffset;
+    public float jumpDetectionRadius;
+    public float jumpDetectionRange;
+
+    [Range(0, 10)]
+    public int groundedCheckCount;
 
     private void Awake()
     {
@@ -36,13 +40,27 @@ public class PlayerMovement : LevelObject
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.cyan;
-        Gizmos.DrawLine(transform.position + jumpDetectionOffset, transform.position + jumpDetectionOffset + Vector3.down * 0.05f);
+        Gizmos.DrawLine(transform.position, transform.position + Vector3.down * jumpDetectionRange);
+        for (int i = 0; i < groundedCheckCount; i++)
+        {
+            Gizmos.DrawLine(transform.position + Vector3.right * Mathf.Sin(2 * Mathf.PI * (i / (float)groundedCheckCount)) * jumpDetectionRadius + Vector3.forward * Mathf.Cos(2 * Mathf.PI * (i / (float)groundedCheckCount)) * jumpDetectionRadius,
+                transform.position + Vector3.right * Mathf.Sin(2 * Mathf.PI * (i / (float)groundedCheckCount)) * jumpDetectionRadius + Vector3.forward * Mathf.Cos(2 * Mathf.PI * (i / (float)groundedCheckCount)) * jumpDetectionRadius + Vector3.down * jumpDetectionRange);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Physics.Raycast(transform.position + jumpDetectionOffset, Vector3.down, 0.05f))
+        bool isGrounded = false;
+        isGrounded |= Physics.Raycast(transform.position, Vector3.down, jumpDetectionRange);
+        if (!isGrounded)
+            for (int i = 0; i < groundedCheckCount; i++)
+            {
+                isGrounded |= Physics.Raycast(transform.position + Vector3.right * Mathf.Sin(2 * Mathf.PI * (i / 8f)) * jumpDetectionRadius + Vector3.forward * Mathf.Cos(2 * Mathf.PI * (i / 8f)) * jumpDetectionRadius, Vector3.down, jumpDetectionRange);
+                if (isGrounded)
+                    break;
+            }
+        if (isGrounded)
             if (Input.GetButtonDown("Jump"))
             rigidbody.AddForce(Vector3.up * 100 * jumpForce);
         rigidbody.AddForce(Vector3.down * fallForce);
