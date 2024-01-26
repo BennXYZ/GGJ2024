@@ -12,6 +12,8 @@ public class LevelRoot : MonoBehaviour
 
     public UnityEvent OnCoinCollectionGoalReached;
 
+    public Transform Player { get; set; }
+
     public void AddCoins(int count = 1)
     {
         CollectedCoins += count;

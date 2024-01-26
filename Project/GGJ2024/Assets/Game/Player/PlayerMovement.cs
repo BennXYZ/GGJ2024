@@ -28,6 +28,8 @@ public class PlayerMovement : LevelObject
         base.Start();
         //Debugging for me
         Cursor.visible = false;
+
+        Level.Player = transform;
     }
 
     // Update is called once per frame
