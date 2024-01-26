@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : LevelObject
 {
     public float cameraMovementSpeed;
     public float movementSpeed;
@@ -23,8 +23,9 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         //Debugging for me
         Cursor.visible = false;
     }
@@ -47,9 +48,6 @@ public class PlayerMovement : MonoBehaviour
                 currentNormalizedSpeed.y = Mathf.Max(currentNormalizedSpeed.y - acceleration * Time.deltaTime, Input.GetAxis("Vertical"));
             else if (currentNormalizedSpeed.y < Input.GetAxis("Vertical"))
                 currentNormalizedSpeed.y = Mathf.Max(currentNormalizedSpeed.y + acceleration * Time.deltaTime, Input.GetAxis("Vertical"));
-
-            //currentNormalizedSpeed.x = Mathf.Clamp(currentNormalizedSpeed.x + Input.GetAxis("Horizontal") * (1 / Mathf.Abs(acceleration)) * Time.deltaTime, -movementSpeed, movementSpeed);
-            //currentNormalizedSpeed.y = Mathf.Clamp(currentNormalizedSpeed.y + Input.GetAxis("Vertical") * (1 / Mathf.Abs(acceleration)) * Time.deltaTime, -movementSpeed, movementSpeed);
         }
 
         rigidbody.transform.Rotate(Vector3.up, Input.GetAxis("Mouse X") * cameraMovementSpeed);
