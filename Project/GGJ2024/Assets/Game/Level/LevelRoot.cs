@@ -12,6 +12,7 @@ public class LevelRoot : MonoBehaviour
     public int CollectedCoins { get; private set; }
 
     public UnityEvent OnCoinCollectionGoalReached;
+    public UnityEvent OnCoinsCollected;
 
     public StealthState CurrentStealthState { get; private set; }
 
@@ -46,6 +47,7 @@ public class LevelRoot : MonoBehaviour
     public void AddCoins(int count = 1)
     {
         CollectedCoins += count;
+        OnCoinsCollected.Invoke();
         if (CoinCollectionGoal <= CollectedCoins)
             OnCoinCollectionGoalReached.Invoke();
     }

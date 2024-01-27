@@ -10,7 +10,7 @@ public class EnemyBase : LevelObject, IGasReceiver
     public ParticleSystem SleepParticles { get; private set; }
 
     private CapsuleCollider mainCollider;
-    private Rigidbody rigidbody;
+    private new Rigidbody rigidbody;
 
     public NavMeshAgent Agent { get; private set; }
 
