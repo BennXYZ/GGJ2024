@@ -7,6 +7,9 @@ class CollectableCoin : LevelObject
     [field:Min(1)]
     public int Value { get; private set; } = 1;
 
+    public float rotationSpeed;
+    public Transform visualsTransform;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(Constants.PLAYER_TAG))
@@ -18,5 +21,10 @@ class CollectableCoin : LevelObject
             // Destroy for now
             Destroy(gameObject);
         }
+    }
+
+    private void Update()
+    {
+        visualsTransform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime, Space.World);
     }
 }
