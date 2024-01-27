@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: 70fc7fa8e78e3374aaaeb5148f6d3429
+guid: 60a4e519421e4544db8b4010ab4c85cb
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: DoorTexture.png
-    second: {fileID: 2100000, guid: 96a367dea4eacfe4793e8c5cd97b0036, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
