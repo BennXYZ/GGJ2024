@@ -12,12 +12,14 @@ public class EnemySleepState : EnemyState
         downedDuration = 10.0f;
         Enemy.SleepParticles.Play();
         Enemy.Agent.isStopped = true;
+        Enemy.EnableRagdoll(true);
     }
 
     public override void End()
     {
         Enemy.SleepParticles.Stop();
         Enemy.Agent.isStopped = false;
+        Enemy.EnableRagdoll(false);
 
     }
 

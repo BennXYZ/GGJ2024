@@ -10,6 +10,7 @@ public class EnemyBase : LevelObject, IGasReceiver
     public ParticleSystem SleepParticles { get; private set; }
 
     private CapsuleCollider mainCollider;
+    private Rigidbody rigidbody;
 
     public NavMeshAgent Agent { get; private set; }
 
@@ -18,8 +19,11 @@ public class EnemyBase : LevelObject, IGasReceiver
 
     [SerializeField]
     Animator animator;
-
     public Animator Animator => animator;
+
+    [SerializeField]
+    GameObject ragdoll;
+    public GameObject Ragdoll => ragdoll;
 
     public Vector3 StartPosition { get; set; }
 
@@ -36,7 +40,36 @@ public class EnemyBase : LevelObject, IGasReceiver
         Level.AddEnemy(this);
 
         mainCollider = GetComponent<CapsuleCollider>();
+        rigidbody = GetComponent<Rigidbody>();
         Agent = GetComponent<NavMeshAgent>();
+    }
+
+    public void EnableRagdoll(bool value)
+    {
+        Ragdoll.SetActive(value);
+        animator.gameObject.SetActive(!value);
+        mainCollider.enabled = false;
+        if (value)
+        {
+            ragdoll.transform.localPosition = animator.transform.localPosition;
+            ragdoll.transform.localRotation = animator.transform.localRotation;
+            CopyTransformToRagdoll(animator.transform, ragdoll.transform);
+        }
+    }
+
+    void CopyTransformToRagdoll(Transform parent, Transform ragdollParent)
+    {
+        foreach(Transform child in parent)
+        {
+            Transform ragdollChild = ragdollParent.Find(child.name);
+            if (ragdollChild)
+            {
+                ragdollChild.localPosition = child.localPosition;
+                ragdollChild.localRotation = child.localRotation;
+                if (child.childCount > 0)
+                    CopyTransformToRagdoll(child, ragdollChild);
+            }
+        }
     }
 
     protected virtual void Update()
