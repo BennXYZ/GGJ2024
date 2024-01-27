@@ -3,7 +3,12 @@ guid: 924aac6aac395e14fb1591450eb39729
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ClownMaterial
+    second: {fileID: 2100000, guid: db4c2b4840ea48d479794dcc1f0057fe, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -31,11 +36,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Armature|BLANK
-      takeName: Armature|BLANK
+      name: Armature|Idle (1)
+      takeName: Armature|Idle
       internalID: -2521625359740421055
       firstFrame: 0
-      lastFrame: 13
+      lastFrame: 23
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
