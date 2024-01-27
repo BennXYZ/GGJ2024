@@ -29,6 +29,7 @@ public class EnemyPatrolState : EnemyState
                         targetIndex = i;
                     }
                 }
+                Enemy.Agent.SetDestination(guard.Path[targetIndex].position);
             }
         }
     }
@@ -43,15 +44,15 @@ public class EnemyPatrolState : EnemyState
         GuardEnemy guard = GetEnemy<GuardEnemy>();
         if (guard != null)
         {
-            if (guard.Path.Count <= targetIndex)
-            {
-                targetIndex = 0;
-            }
-
-            float distance = Vector3.Distance(guard.Path[targetIndex].position, Enemy.transform.position);
+            float distance = Vector3.Distance(guard.Path[targetIndex].position, Enemy.PositionOnGround);
             if (distance < 1.0f)
             {
                 ++targetIndex;
+                if (guard.Path.Count <= targetIndex)
+                {
+                    targetIndex = 0;
+                }
+                Enemy.Agent.SetDestination(guard.Path[targetIndex].position);
             }
         }
     }

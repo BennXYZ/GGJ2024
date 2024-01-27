@@ -4,6 +4,11 @@
 
     public override void Begin()
     {
+        GuardEnemy guard = GetEnemy<GuardEnemy>();
+        if (guard != null && guard.Path.Count > 0)
+        {
+            SetState<EnemyPatrolState>();
+        }
     }
 
     public override void End()
