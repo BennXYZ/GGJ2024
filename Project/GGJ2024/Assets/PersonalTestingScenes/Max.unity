@@ -515,6 +515,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 344069721}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &607002624 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7429652228261413384, guid: 4bb77d150f7043749be6f273db5c6f8a,
+    type: 3}
+  m_PrefabInstance: {fileID: 5710757613299825258}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &635094948 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6379500619773585367, guid: 18c8228dd2c0e314f870072413e40c3b,
@@ -809,6 +815,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GasArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 5083306929533051270, guid: 20820ab7b2f0ec24098bee06d2b64471,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5653244380323524716, guid: 20820ab7b2f0ec24098bee06d2b64471,
         type: 3}
@@ -1507,6 +1518,11 @@ PrefabInstance:
       propertyPath: debugDrawPath
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7683154060735551829, guid: 4bb77d150f7043749be6f273db5c6f8a,
+        type: 3}
+      propertyPath: <SleepParticles>k__BackingField
+      value: 
+      objectReference: {fileID: 607002624}
     - target: {fileID: 7683154060735551829, guid: 4bb77d150f7043749be6f273db5c6f8a,
         type: 3}
       propertyPath: <Path>k__BackingField.Array.size
