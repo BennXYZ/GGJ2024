@@ -13,7 +13,10 @@ public class PlayerMovement : PlayerComponent
     public Rigidbody rigidbody;
     public Transform cameraHolder;
 
+    public Animator animator;
+
     Vector2 currentNormalizedSpeed;
+    bool isGrounded;
 
     private void Awake()
     {
@@ -61,5 +64,7 @@ public class PlayerMovement : PlayerComponent
     private void FixedUpdate()
     {
         rigidbody.velocity = Vector3.up * rigidbody.velocity.y + rigidbody.transform.forward * currentNormalizedSpeed.y * movementSpeed + rigidbody.transform.right * currentNormalizedSpeed.x * movementSpeed;
+        animator.SetFloat("WalkSpeed", currentNormalizedSpeed.magnitude);
+        animator.SetFloat("JumpSpeed", rigidbody.velocity.y);
     }
 }
