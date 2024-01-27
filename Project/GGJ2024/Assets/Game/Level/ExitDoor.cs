@@ -1,5 +1,10 @@
-﻿public class ExitDoor : LevelObject
+﻿using UnityEngine;
+
+public class ExitDoor : LevelObject
 {
+    [SerializeField]
+    Animator vaultDoorAnimator;
+
     protected override void Start()
     {
         base.Start();
@@ -9,6 +14,6 @@
 
     public void OpenDoor()
     {
-        Destroy(gameObject);
+        vaultDoorAnimator.SetTrigger("OpenVaultDoor");
     }
 }
