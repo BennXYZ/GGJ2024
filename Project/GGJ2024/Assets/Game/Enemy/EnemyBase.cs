@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,14 +7,25 @@ public class EnemyBase : LevelObject, IGasReceiver
 {
     public NavMeshAgent Agent { get; private set; }
 
+    public EnemyStateMachine StateMachine { get; private set; } = new EnemyStateMachine();
+    public StealthState StealthState => StateMachine.StealthState;
+
+    public Vector3 StartPosition { get; set; }
+
     protected override void Start()
     {
         base.Start();
 
+        StartPosition = transform.position;
+
         Level.AddEnemy(this);
 
         Agent = GetComponent<NavMeshAgent>();
-        Agent.SetDestination(Level.Player.transform.position);
+    }
+
+    protected virtual void Update()
+    {
+        StateMachine.Update();
     }
 
     private void OnDestroy()
@@ -26,11 +36,32 @@ public class EnemyBase : LevelObject, IGasReceiver
 
     public void EnteredGasArea(GasArea gasArea)
     {
-        Destroy(gameObject);
+        StateMachine.SetState<EnemyLaughState>();
     }
 
     public void ExitedGasArea(GasArea gasArea)
     {
 
+    }
+
+    public bool CanSeePlayer()
+    {
+        if (StateMachine.Blackboard.Player != null)
+        {
+            Vector3 playerPosition = StateMachine.Blackboard.Player.transform.position;
+            Vector3 enemyPosition = transform.position;
+
+            float distance = Vector3.Distance(playerPosition, enemyPosition);
+            float angle = Vector3.Angle(playerPosition - enemyPosition, transform.forward);
+
+            if (distance < 10.0f && angle < 30)
+            {
+                if (Physics.Raycast(transform.position, playerPosition - enemyPosition, out RaycastHit hit, 10.0f))
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

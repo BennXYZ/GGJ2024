@@ -6,12 +6,17 @@ using UnityEngine.Events;
 
 public class LevelRoot : MonoBehaviour
 {
-    [field:SerializeField]
+    [field: SerializeField]
     public int CoinCollectionGoal { get; private set; }
 
     public int CollectedCoins { get; private set; }
 
     public UnityEvent OnCoinCollectionGoalReached;
+
+    public StealthState CurrentStealthState { get; private set; }
+
+    public UnityEvent OnStealthStateChanged;
+    private PlayerController player;
 
     public List<EnemyBase> Enemies { get; } = new List<EnemyBase>();
 
@@ -26,7 +31,17 @@ public class LevelRoot : MonoBehaviour
         Enemies.Remove(enemyBase);
     }
 
-    public PlayerController Player { get; set; }
+    public PlayerController Player
+    {
+        get => player;
+        set
+        {
+            player = value;
+            Blackboard.Player = value;
+        }
+    }
+
+    public Blackboard Blackboard { get; private set; } = new Blackboard();
 
     public void AddCoins(int count = 1)
     {
@@ -44,6 +59,24 @@ public class LevelRoot : MonoBehaviour
     {
         if (GameManager.Instance.CurrentLevel == this)
             GameManager.Instance.CurrentLevel = null;
+    }
+
+    public void OnEnemyStateChanged()
+    {
+        StealthState highestState = StealthState.Idle;
+
+        for (int i = 0; i < Enemies.Count; i++)
+        {
+            StealthState state = Enemies[i].StealthState;
+            if (highestState < state)
+                highestState = state;
+        }
+
+        if (highestState != CurrentStealthState)
+        {
+            CurrentStealthState = highestState;
+            OnStealthStateChanged.Invoke();
+        }
     }
 }
 
