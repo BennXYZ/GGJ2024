@@ -52,16 +52,16 @@ MonoBehaviour:
   cameraMovementSpeed: 2
   movementSpeed: 5
   acceleration: 200
-  jumpForce: 6
-  fallForce: 7
+  jumpForce: 8
+  fallForce: 10
   maxLowerCameraAngle: -70
   maxHigherCameraAngle: 50
   rigidbody: {fileID: 0}
   cameraHolder: {fileID: 0}
   animator: {fileID: 3046995329664884885}
-  jumpDetectionRadius: 0.4
+  jumpDetectionRadius: 0.45
   jumpDetectionRange: 1.1
-  groundedCheckCount: 2
+  groundedCheckCount: 8
 --- !u!136 &1228235798150936397
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -69,7 +69,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2271139294116341659}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 75c1456ce71ab224cbcdf620b2346172, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

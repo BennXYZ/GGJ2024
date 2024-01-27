@@ -1581,12 +1581,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1228235798150936397, guid: 6223834d2a8cbe143847eca73ab0a185,
-        type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 13400000, guid: 75c1456ce71ab224cbcdf620b2346172,
-        type: 2}
     - target: {fileID: 1235631779607995720, guid: 6223834d2a8cbe143847eca73ab0a185,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1641,26 +1635,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 3035522856016342420, guid: 6223834d2a8cbe143847eca73ab0a185,
-        type: 3}
-      propertyPath: fallForce
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3035522856016342420, guid: 6223834d2a8cbe143847eca73ab0a185,
-        type: 3}
-      propertyPath: jumpForce
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3035522856016342420, guid: 6223834d2a8cbe143847eca73ab0a185,
-        type: 3}
-      propertyPath: groundedCheckCount
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3035522856016342420, guid: 6223834d2a8cbe143847eca73ab0a185,
-        type: 3}
-      propertyPath: jumpDetectionRadius
-      value: 0.45
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
