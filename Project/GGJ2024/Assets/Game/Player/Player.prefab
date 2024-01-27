@@ -10,8 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1235631779607995720}
   - component: {fileID: 3035522856016342420}
-  - component: {fileID: 6570936848972155828}
-  - component: {fileID: 6644495172675873144}
   - component: {fileID: 1228235798150936397}
   - component: {fileID: 187849954887100107}
   - component: {fileID: 2053082459255614224}
@@ -53,65 +51,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraMovementSpeed: 2
   movementSpeed: 5
-  acceleration: 100
-  jumpForce: 3
+  acceleration: 200
+  jumpForce: 6
+  fallForce: 7
   maxLowerCameraAngle: -70
   maxHigherCameraAngle: 50
   rigidbody: {fileID: 0}
   cameraHolder: {fileID: 0}
   animator: {fileID: 3046995329664884885}
---- !u!33 &6570936848972155828
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2271139294116341659}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &6644495172675873144
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2271139294116341659}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
+  jumpDetectionRadius: 0.4
+  jumpDetectionRange: 1.1
+  groundedCheckCount: 2
 --- !u!136 &1228235798150936397
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -159,9 +109,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &2053082459255614224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -424,7 +374,7 @@ PrefabInstance:
     - target: {fileID: 5074512353664290214, guid: 924aac6aac395e14fb1591450eb39729,
         type: 3}
       propertyPath: m_Materials.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5074512353664290214, guid: 924aac6aac395e14fb1591450eb39729,
         type: 3}

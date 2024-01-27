@@ -8,12 +8,19 @@ public class PlayerMovement : PlayerComponent
     public float movementSpeed;
     public float acceleration;
     public float jumpForce;
+    public float fallForce;
     public float maxLowerCameraAngle;
     public float maxHigherCameraAngle;
     public Rigidbody rigidbody;
     public Transform cameraHolder;
 
     public Animator animator;
+
+    public float jumpDetectionRadius;
+    public float jumpDetectionRange;
+
+    [Range(0, 10)]
+    public int groundedCheckCount;
 
     Vector2 currentNormalizedSpeed;
     bool isGrounded;
@@ -35,10 +42,23 @@ public class PlayerMovement : PlayerComponent
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Jump"))
+        isGrounded = false;
+        isGrounded |= Physics.Raycast(transform.position, Vector3.down, jumpDetectionRange);
+        if(!isGrounded)
+        {
+            for (int i = 0; i < groundedCheckCount; i++)
+            {
+                isGrounded |= Physics.Raycast(transform.position + Vector3.right * Mathf.Sin(2 * Mathf.PI * (i / 8f)) * jumpDetectionRadius + Vector3.forward * Mathf.Cos(2 * Mathf.PI * (i / 8f)) * jumpDetectionRadius, Vector3.down, jumpDetectionRange);
+                if (isGrounded)
+                    break;
+            }
+        }
+        if (isGrounded && Input.GetButtonDown("Jump"))
             rigidbody.AddForce(Vector3.up * 100 * jumpForce);
+        rigidbody.AddForce(Vector3.down * fallForce);
+        animator.SetBool("IsGrounded", isGrounded);
 
-        if(acceleration != 0)
+        if (acceleration != 0)
         {
             if (currentNormalizedSpeed.x > Input.GetAxis("Horizontal"))
                 currentNormalizedSpeed.x = Mathf.Max(currentNormalizedSpeed.x - acceleration * Time.deltaTime, Input.GetAxis("Horizontal"));
@@ -61,10 +81,21 @@ public class PlayerMovement : PlayerComponent
         cameraHolder.transform.Rotate(targetRotation - setoffEulerAngle, 0,0);
     }
 
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawLine(transform.position, transform.position + Vector3.down * jumpDetectionRange);
+        for (int i = 0; i < groundedCheckCount; i++)
+        {
+            Gizmos.DrawLine(transform.position + Vector3.right * Mathf.Sin(2 * Mathf.PI * (i / (float)groundedCheckCount)) * jumpDetectionRadius + Vector3.forward * Mathf.Cos(2 * Mathf.PI * (i / (float)groundedCheckCount)) * jumpDetectionRadius,
+                                transform.position + Vector3.right * Mathf.Sin(2 * Mathf.PI * (i / (float)groundedCheckCount)) * jumpDetectionRadius + Vector3.forward * Mathf.Cos(2 * Mathf.PI * (i / (float)groundedCheckCount)) * jumpDetectionRadius + Vector3.down * jumpDetectionRange);
+        }
+    }
+
     private void FixedUpdate()
     {
         rigidbody.velocity = Vector3.up * rigidbody.velocity.y + rigidbody.transform.forward * currentNormalizedSpeed.y * movementSpeed + rigidbody.transform.right * currentNormalizedSpeed.x * movementSpeed;
         animator.SetFloat("WalkSpeed", currentNormalizedSpeed.magnitude);
-        animator.SetFloat("JumpSpeed", rigidbody.velocity.y);
+        animator.SetFloat("JumpSpeed", isGrounded ? 0 : rigidbody.velocity.y);
     }
 }
