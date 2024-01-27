@@ -23,8 +23,8 @@ public class EnemySearchState : EnemyState
     {
         if (!hasReachedLastKnownLocation)
         {
-            float distanceToTarget = Vector3.Distance(Blackboard.LastKnownLocation, Enemy.transform.position);
-            if (distanceToTarget < 2.0f)
+            float distanceToTarget = Vector3.Distance(Blackboard.LastKnownLocation, Enemy.PositionOnGround);
+            if (distanceToTarget < 1.0f)
                 hasReachedLastKnownLocation = true;
         }
         else

@@ -40,7 +40,7 @@ public class EnemyReturnToRoutineState : EnemyState
 
     public override void Update()
     {
-        if (Vector3.Distance(Enemy.transform.position, target) < 1.0f)
+        if (Vector3.Distance(Enemy.PositionOnGround, target) < 1.0f)
         {
             GuardEnemy guard = GetEnemy<GuardEnemy>();
             if (guard != null)
