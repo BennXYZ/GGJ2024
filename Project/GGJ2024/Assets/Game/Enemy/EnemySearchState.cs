@@ -16,6 +16,7 @@ public class EnemySearchState : EnemyState
 
     public override void End()
     {
+        Enemy.Animator.SetFloat("Aggro", 0);
         Enemy.Agent.updateRotation = true;
     }
 

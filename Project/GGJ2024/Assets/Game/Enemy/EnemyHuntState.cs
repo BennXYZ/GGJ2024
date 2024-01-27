@@ -5,6 +5,7 @@
     public override void Begin()
     {
         GuardEnemy guard = GetEnemy<GuardEnemy>();
+        Enemy.Animator.SetFloat("Aggro", 1);
         if (guard == null)
         {
             SetState<EnemyReturnToRoutineState>();
@@ -13,7 +14,6 @@
 
     public override void End()
     {
-
     }
 
     public override void Update()

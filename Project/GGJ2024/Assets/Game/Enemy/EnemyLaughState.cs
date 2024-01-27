@@ -14,13 +14,15 @@ public class EnemyLaughState : EnemyState
         Enemy.Agent.isStopped = true;
 
         laughDuration = 1;
+        Enemy.Animator.SetFloat("Aggro", 0);
+        Enemy.Animator.SetBool("Laughing", true);
 
         // TODO: Play laugh animation
     }
 
     public override void End()
     {
-
+        Enemy.Animator.SetBool("Laughing", false);
     }
 
     public override void Update()
