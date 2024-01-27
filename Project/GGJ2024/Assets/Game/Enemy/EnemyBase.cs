@@ -16,6 +16,11 @@ public class EnemyBase : LevelObject, IGasReceiver
     public EnemyStateMachine StateMachine { get; private set; } = new EnemyStateMachine();
     public StealthState StealthState => StateMachine.StealthState;
 
+    [SerializeField]
+    Animator animator;
+
+    public Animator Animator => animator;
+
     public Vector3 StartPosition { get; set; }
 
     public Vector3 PositionOnGround => transform.position - new Vector3(0, mainCollider.height / 2);
@@ -37,6 +42,7 @@ public class EnemyBase : LevelObject, IGasReceiver
     protected virtual void Update()
     {
         StateMachine.Update();
+        Animator.SetFloat("MoveSpeed", Agent.velocity.magnitude);
     }
 
     private void OnDestroy()
