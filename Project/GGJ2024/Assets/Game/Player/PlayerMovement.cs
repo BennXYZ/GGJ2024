@@ -11,7 +11,7 @@ public class PlayerMovement : PlayerComponent
     public float fallForce;
     public float maxLowerCameraAngle;
     public float maxHigherCameraAngle;
-    public Rigidbody rigidbody;
+    public new Rigidbody rigidbody;
     public Transform cameraHolder;
 
     public Animator animator;
