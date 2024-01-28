@@ -1,9 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : LevelObject
 {
     private List<PlayerWeapon> weapons = new List<PlayerWeapon>();
+
+    [SerializeField]
+    GameObject ragdoll;
+
+    [SerializeField]
+    GameObject modell;
+
+    bool died = false;
 
     protected override void Start()
     {
@@ -15,6 +24,43 @@ public class PlayerController : LevelObject
     }
 
     public IReadOnlyList<PlayerWeapon> Weapons => weapons;
+
+    public void Death()
+    {
+        if (died)
+            return;
+        died = true;
+        EnableRagdoll(true);
+        GetComponent<PlayerMovement>().enabled = false;
+        GameObject.Find("HeadUpDisplay").GetComponent<HeadUpDisplay>().Death();
+    }
+
+    public void EnableRagdoll(bool value)
+    {
+        ragdoll.SetActive(value);
+        modell.SetActive(!value);
+        if (value)
+        {
+            ragdoll.transform.localPosition = modell.transform.localPosition;
+            ragdoll.transform.localRotation = modell.transform.localRotation;
+            CopyTransformToRagdoll(modell.transform, ragdoll.transform);
+        }
+    }
+
+    void CopyTransformToRagdoll(Transform parent, Transform ragdollParent)
+    {
+        foreach (Transform child in parent)
+        {
+            Transform ragdollChild = ragdollParent.Find(child.name);
+            if (ragdollChild)
+            {
+                ragdollChild.localPosition = child.localPosition;
+                ragdollChild.localRotation = child.localRotation;
+                if (child.childCount > 0)
+                    CopyTransformToRagdoll(child, ragdollChild);
+            }
+        }
+    }
 }
 
 [RequireComponent(typeof(PlayerController))]

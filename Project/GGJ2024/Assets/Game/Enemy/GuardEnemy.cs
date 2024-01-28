@@ -30,6 +30,13 @@ class GuardEnemy : EnemyBase
         StateMachine.Begin<EnemyIdleState>(this);
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player" && StateMachine.CurrentState.GetType() == typeof(EnemyHuntState))
+        {
+            collision.gameObject.GetComponent<PlayerController>().Death();
+        }
+    }
     protected override void Update()
     {
         base.Update();

@@ -29,6 +29,11 @@ class HeadUpDisplay : MonoBehaviour
             PlayerSet();
     }
 
+    internal void Death()
+    {
+        throw new NotImplementedException();
+    }
+
     private void PlayerSet()
     {
         WeaponContainer.RefreshWeapons();
