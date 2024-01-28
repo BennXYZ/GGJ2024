@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
@@ -34,7 +35,9 @@ public class EnemyBase : LevelObject, IGasReceiver
 
     public Vector3 PositionOnGround => transform.position - new Vector3(0, mainCollider.height / 2);
 
-    public bool InGas { get; private set; }
+    HashSet<GasArea> inGasArea = new HashSet<GasArea>();
+
+    public bool InGas => inGasArea.Count > 0;
 
     protected override void Start()
     {
@@ -98,13 +101,13 @@ public class EnemyBase : LevelObject, IGasReceiver
 
     public void EnteredGasArea(GasArea gasArea)
     {
-        InGas = true;
+        inGasArea.Add(gasArea);
         StateMachine.SetState<EnemyLaughState>();
     }
 
     public void ExitedGasArea(GasArea gasArea)
     {
-        InGas = false;
+        inGasArea.Remove(gasArea);
     }
 
     public bool CanSeePlayer()
