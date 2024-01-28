@@ -40,8 +40,11 @@ public class EnemyBase : LevelObject, IGasReceiver
 
     private void CheckLocation(Vector3 position)
     {
-        AttractionLocation = position;
-        StateMachine.SetState<EnemyInvestigateAttractionState>();
+        if (StateMachine.MaySeePlayer())
+        {
+            AttractionLocation = position;
+            StateMachine.SetState<EnemyInvestigateAttractionState>();
+        }
     }
 
     public StealthState StealthState => StateMachine.StealthState;
