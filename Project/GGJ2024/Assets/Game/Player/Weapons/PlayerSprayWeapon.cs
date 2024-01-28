@@ -19,6 +19,11 @@ public class PlayerSprayWeapon : PlayerAmmunitionWeapon
 
     Coroutine currentCoroutine;
 
+    private void Start()
+    {
+        currentCoroutine = StartCoroutine(RegenAmmunition());
+    }
+
     public override void FireWeapon()
     {
         gasArea.SetActive(true);
@@ -31,7 +36,9 @@ public class PlayerSprayWeapon : PlayerAmmunitionWeapon
 
     public override void EndUsingWeapon()
     {
-        gasArea.SetActive(false);
+        if (!gasArea.activeSelf)
+            return;
+            gasArea.SetActive(false);
         particleEffect.Stop();
         if (currentCoroutine != null)
             StopCoroutine(currentCoroutine);
