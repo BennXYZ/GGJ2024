@@ -16,6 +16,8 @@ public class PlayerMovement : PlayerComponent
     [SerializeField]
     GameObject jumpAudioPrefab;
 
+    public Transform rotateable;
+
     public Animator animator;
 
     public float jumpDetectionRadius;
@@ -31,7 +33,8 @@ public class PlayerMovement : PlayerComponent
     {
         if(!rigidbody)
             rigidbody = GetComponent<Rigidbody>();
-        cameraHolder = transform.Find("CameraHolder");
+        if(!cameraHolder)
+            cameraHolder = transform.Find("CameraHolder");
     }
 
     // Start is called before the first frame update
@@ -77,11 +80,11 @@ public class PlayerMovement : PlayerComponent
                 currentNormalizedSpeed.y = Mathf.Max(currentNormalizedSpeed.y + acceleration * Time.deltaTime, Input.GetAxis("Vertical"));
         }
 
-        rigidbody.transform.Rotate(Vector3.up, Input.GetAxis("Mouse X") * cameraMovementSpeed);
+        rotateable.Rotate(0, Input.GetAxis("Mouse X") * cameraMovementSpeed * Time.deltaTime, 0, Space.World);
         float setoffEulerAngle = cameraHolder.transform.localEulerAngles.x;
         if (setoffEulerAngle > 180)
             setoffEulerAngle -= 360;
-        float targetRotation = setoffEulerAngle - Input.GetAxis("Mouse Y") * cameraMovementSpeed;
+        float targetRotation = setoffEulerAngle - Input.GetAxis("Mouse Y") * cameraMovementSpeed * Time.deltaTime;
         targetRotation = Mathf.Clamp(targetRotation, maxLowerCameraAngle, maxHigherCameraAngle);
         cameraHolder.transform.Rotate(targetRotation - setoffEulerAngle, 0,0);
     }
