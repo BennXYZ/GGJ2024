@@ -25,7 +25,7 @@ public class EnemyInvestigateAttractionState : EnemyState
         if (!hasReachedLastKnownLocation)
         {
             float distanceToTarget = Vector3.Distance(Enemy.AttractionLocation, Enemy.PositionOnGround);
-            if (distanceToTarget < 1.0f)
+            if (distanceToTarget < 4.0f)
                 hasReachedLastKnownLocation = true;
         }
         else

@@ -5289,6 +5289,9 @@ MonoBehaviour:
   OnPlayerSet:
     m_PersistentCalls:
       m_Calls: []
+  OnPlayerDied:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &1541819884
 Transform:
   m_ObjectHideFlags: 0
@@ -6294,6 +6297,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7683154060735551829, guid: 4bb77d150f7043749be6f273db5c6f8a,
+        type: 3}
+      propertyPath: <Path>k__BackingField.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7683154060735551829, guid: 4bb77d150f7043749be6f273db5c6f8a,
+        type: 3}
+      propertyPath: '<Path>k__BackingField.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1497569343}
+    - target: {fileID: 7683154060735551829, guid: 4bb77d150f7043749be6f273db5c6f8a,
+        type: 3}
+      propertyPath: '<Path>k__BackingField.Array.data[1]'
+      value: 
+      objectReference: {fileID: 238230829}
+    - target: {fileID: 7683154060735551829, guid: 4bb77d150f7043749be6f273db5c6f8a,
+        type: 3}
+      propertyPath: '<Path>k__BackingField.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1032776982}
+    - target: {fileID: 7683154060735551829, guid: 4bb77d150f7043749be6f273db5c6f8a,
+        type: 3}
+      propertyPath: '<Path>k__BackingField.Array.data[3]'
+      value: 
+      objectReference: {fileID: 1583252359}
+    - target: {fileID: 7683154060735551829, guid: 4bb77d150f7043749be6f273db5c6f8a,
+        type: 3}
+      propertyPath: '<Path>k__BackingField.Array.data[4]'
+      value: 
+      objectReference: {fileID: 872188776}
+    - target: {fileID: 7683154060735551829, guid: 4bb77d150f7043749be6f273db5c6f8a,
+        type: 3}
+      propertyPath: '<Path>k__BackingField.Array.data[5]'
+      value: 
+      objectReference: {fileID: 948003298}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

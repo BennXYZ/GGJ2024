@@ -6,10 +6,12 @@ public class EnemySearchState : EnemyState
 
     bool hasReachedLastKnownLocation = false;
     float searchTime = 2.0f;
+    Vector3 targetLocation;
 
     public override void Begin()
     {
-        Enemy.Agent.SetDestination(Blackboard.LastKnownLocation);
+        targetLocation = Blackboard.LastKnownLocation;
+        Enemy.Agent.SetDestination(targetLocation);
         hasReachedLastKnownLocation = false;
         searchTime = 2.0f;
     }
@@ -24,7 +26,7 @@ public class EnemySearchState : EnemyState
     {
         if (!hasReachedLastKnownLocation)
         {
-            float distanceToTarget = Vector3.Distance(Blackboard.LastKnownLocation, Enemy.PositionOnGround);
+            float distanceToTarget = Vector3.Distance(targetLocation, Enemy.PositionOnGround);
             if (distanceToTarget < 1.0f)
                 hasReachedLastKnownLocation = true;
         }
