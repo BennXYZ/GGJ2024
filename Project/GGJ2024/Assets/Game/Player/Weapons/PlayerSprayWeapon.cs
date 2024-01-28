@@ -14,6 +14,9 @@ public class PlayerSprayWeapon : PlayerAmmunitionWeapon
     [SerializeField]
     ParticleSystem particleEffect;
 
+    [SerializeField]
+    AudioSource flowerAudio;
+
     Coroutine currentCoroutine;
 
     public override void FireWeapon()
@@ -23,6 +26,7 @@ public class PlayerSprayWeapon : PlayerAmmunitionWeapon
         if(currentCoroutine != null)
             StopCoroutine(currentCoroutine);
         currentCoroutine = StartCoroutine(UseUpAmmunition());
+        flowerAudio.volume = 0.3f;
     }
 
     public override void EndUsingWeapon()
@@ -32,6 +36,7 @@ public class PlayerSprayWeapon : PlayerAmmunitionWeapon
         if (currentCoroutine != null)
             StopCoroutine(currentCoroutine);
         currentCoroutine = StartCoroutine(RegenAmmunition());
+        flowerAudio.volume = 0;
     }
 
     IEnumerator UseUpAmmunition()

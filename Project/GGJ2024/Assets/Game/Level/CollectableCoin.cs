@@ -9,6 +9,8 @@ class CollectableCoin : LevelObject
 
     public float rotationSpeed;
     public Transform visualsTransform;
+    [SerializeField]
+    GameObject audioPrefab;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -17,6 +19,7 @@ class CollectableCoin : LevelObject
             Level.AddCoins(Value);
 
             // TODO: Maybe play an animation here?
+            Instantiate(audioPrefab, transform.position, transform.rotation);
 
             // Destroy for now
             Destroy(gameObject);
