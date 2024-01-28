@@ -18,6 +18,7 @@ public class LevelRoot : MonoBehaviour
 
     public UnityEvent OnStealthStateChanged;
     private PlayerController player;
+    public UnityEvent OnPlayerSet;
 
     public List<EnemyBase> Enemies { get; } = new List<EnemyBase>();
 
@@ -39,6 +40,7 @@ public class LevelRoot : MonoBehaviour
         {
             player = value;
             Blackboard.Player = value;
+            OnPlayerSet.Invoke();
         }
     }
 

@@ -20,10 +20,17 @@ class HeadUpDisplay : MonoBehaviour
         levelRoot.OnStealthStateChanged.AddListener(StealthStateChanged);
         levelRoot.OnCoinsCollected.AddListener(CoinsCollected);
         levelRoot.OnCoinCollectionGoalReached.AddListener(GoalReached);
+        levelRoot.OnPlayerSet.AddListener(PlayerSet);
         CoinCounterDisplay.SetRequiredCount(levelRoot.CoinCollectionGoal);
         CoinCounterDisplay.SetOwnedCount(levelRoot.CollectedCoins);
         StealthStateDisplay.SetStealthState(StealthState.Idle);
 
+        if (levelRoot.Player != null)
+            PlayerSet();
+    }
+
+    private void PlayerSet()
+    {
         WeaponContainer.RefreshWeapons();
     }
 
