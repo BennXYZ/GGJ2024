@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 1228235798150936397}
   - component: {fileID: 187849954887100107}
   - component: {fileID: 2053082459255614224}
-  - component: {fileID: 8352776929237318713}
   - component: {fileID: -7247367472242918327}
   - component: {fileID: -7889364367980232445}
   m_Layer: 0
@@ -57,7 +56,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraMovementSpeed: 2
   movementSpeed: 5
-  acceleration: 10
+  acceleration: 2
   jumpForce: 8
   fallForce: 10
   maxLowerCameraAngle: -70
@@ -132,22 +131,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ragdoll: {fileID: 6190293635976640863}
   modell: {fileID: 1593267962466368432}
---- !u!114 &8352776929237318713
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2271139294116341659}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3c84e9def4c6684faf0aa2ff4fb2aa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Sprite>k__BackingField: {fileID: 1561008729, guid: 00853b7359f86614aaa2595a8ec71587,
-    type: 3}
-  cooldown: 0
-  totalCooldown: 2
 --- !u!114 &-7247367472242918327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -361,8 +344,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7634117627962653661}
-  - component: {fileID: 8729593815255556286}
-  - component: {fileID: 3529689965946233731}
   - component: {fileID: 9220986719961976065}
   m_Layer: 6
   m_Name: GasSprayArea
@@ -380,54 +361,12 @@ Transform:
   m_GameObject: {fileID: 3722461832701168146}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.00002, z: 3.5269337}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1235631779607995720}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &8729593815255556286
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3722461832701168146}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 3.52, y: 2.41, z: 4.41}
-  m_Center: {x: 0, y: 0.53, z: 2.63}
---- !u!135 &3529689965946233731
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3722461832701168146}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Radius: 0
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &9220986719961976065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -441,8 +380,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particles: {fileID: 0}
-  trigger: {fileID: 0}
-  <Size>k__BackingField: 0
+  <Size>k__BackingField: 2.5
+  isPlayerWeapon: 1
   duration: 0
 --- !u!1 &5668846674613884969
 GameObject:

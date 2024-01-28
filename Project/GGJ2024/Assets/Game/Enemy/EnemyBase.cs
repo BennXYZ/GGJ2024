@@ -39,6 +39,8 @@ public class EnemyBase : LevelObject, IGasReceiver
 
     public bool InGas => inGasArea.Count > 0;
 
+    public Vector3 Position => transform.position;
+
     protected override void Start()
     {
         base.Start();
