@@ -60,7 +60,7 @@ public class GasArea : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         for (int i = 0; i < currentReceivers.Count; i++)
         {

@@ -22,6 +22,8 @@ public class LevelRoot : MonoBehaviour
 
     public List<EnemyBase> Enemies { get; } = new List<EnemyBase>();
 
+    public List<IGasReceiver> GasReceivers { get; } = new List<IGasReceiver>();
+
     public void AddEnemy(EnemyBase enemyBase)
     {
         if (!Enemies.Contains(enemyBase))
