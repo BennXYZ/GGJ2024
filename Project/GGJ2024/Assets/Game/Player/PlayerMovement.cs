@@ -13,6 +13,8 @@ public class PlayerMovement : PlayerComponent
     public float maxHigherCameraAngle;
     public new Rigidbody rigidbody;
     public Transform cameraHolder;
+    [SerializeField]
+    GameObject jumpAudioPrefab;
 
     public Animator animator;
 
@@ -54,7 +56,10 @@ public class PlayerMovement : PlayerComponent
             }
         }
         if (isGrounded && Input.GetButtonDown("Jump"))
+        {
+            Instantiate(jumpAudioPrefab, transform.position, transform.rotation);
             rigidbody.AddForce(Vector3.up * 100 * jumpForce);
+        }
         rigidbody.AddForce(Vector3.down * fallForce);
         animator.SetBool("IsGrounded", isGrounded);
 

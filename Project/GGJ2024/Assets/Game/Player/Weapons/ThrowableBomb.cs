@@ -9,6 +9,9 @@ public class ThrowableBomb : MonoBehaviour
 
     public Rigidbody rigidBody;
 
+    [SerializeField]
+    GameObject audioPrefab;
+
     public void Throw(Vector3 direction)
     {
         rigidBody.AddForce(direction);
@@ -18,6 +21,8 @@ public class ThrowableBomb : MonoBehaviour
     {
         if(gasArea)
             Instantiate(gasArea, transform.position, Quaternion.identity);
+        if(audioPrefab)
+            Instantiate(audioPrefab, transform.position, transform.rotation);
         Destroy(gameObject);
     }
 }

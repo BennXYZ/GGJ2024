@@ -14,7 +14,15 @@ public class PlayerSprayWeapon : PlayerAmmunitionWeapon
     [SerializeField]
     ParticleSystem particleEffect;
 
+    [SerializeField]
+    AudioSource flowerAudio;
+
     Coroutine currentCoroutine;
+
+    private void Start()
+    {
+        currentCoroutine = StartCoroutine(RegenAmmunition());
+    }
 
     public override void FireWeapon()
     {
@@ -23,15 +31,19 @@ public class PlayerSprayWeapon : PlayerAmmunitionWeapon
         if(currentCoroutine != null)
             StopCoroutine(currentCoroutine);
         currentCoroutine = StartCoroutine(UseUpAmmunition());
+        flowerAudio.volume = 0.3f;
     }
 
     public override void EndUsingWeapon()
     {
-        gasArea.SetActive(false);
+        if (!gasArea.activeSelf)
+            return;
+            gasArea.SetActive(false);
         particleEffect.Stop();
         if (currentCoroutine != null)
             StopCoroutine(currentCoroutine);
         currentCoroutine = StartCoroutine(RegenAmmunition());
+        flowerAudio.volume = 0;
     }
 
     IEnumerator UseUpAmmunition()
