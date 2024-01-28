@@ -161,8 +161,9 @@ MonoBehaviour:
   <Sprite>k__BackingField: {fileID: -1109932816, guid: 00853b7359f86614aaa2595a8ec71587,
     type: 3}
   ammunition: 2
-  bombPrefab: {fileID: 0}
-  throwStrength: 0
+  bombPrefab: {fileID: 4749834101336530114, guid: 69f68d4e3046fd746b5678995cd95359,
+    type: 3}
+  throwStrength: 666
 --- !u!114 &-7889364367980232445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -423,7 +424,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 0
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Radius: 0
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &9220986719961976065
 MonoBehaviour:
@@ -1192,7 +1193,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 1.12
+      value: 0.0001
       mode: 0
       spread: 0
       speed:

@@ -32,10 +32,11 @@ public class EnemyStateMachine
 
     public bool MaySeePlayer()
     {
-        return currentState != null ? currentState.StealthState == StealthState.Idle && currentState.CanSee : false;
+        return currentState != null ? currentState.StealthState != StealthState.Alert && currentState.CanSee : false;
     }
 
     public EnemyBase Owner { get; private set; }
+    public EnemyState CurrentState => currentState;
 
     public void Begin<TEnemyState>(EnemyBase owner) where TEnemyState : EnemyState
     {

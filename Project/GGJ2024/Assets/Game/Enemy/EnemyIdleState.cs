@@ -9,6 +9,12 @@
         {
             SetState<EnemyPatrolState>();
         }
+        else
+        {
+            Enemy.Agent.updateRotation = false;
+            Enemy.transform.rotation = Enemy.StartRotation;
+            Enemy.Agent.updateRotation = true;
+        }
     }
 
     public override void End()

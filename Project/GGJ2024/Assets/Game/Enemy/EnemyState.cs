@@ -31,6 +31,11 @@ public abstract class EnemyState
     public abstract void Begin();
     public abstract void Update();
     public abstract void End();
+
+    public override string ToString()
+    {
+        return GetType().Name;
+    }
 }
 
 public enum StealthState

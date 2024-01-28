@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -18,6 +19,9 @@ public class EnemyBase : LevelObject, IGasReceiver
     public StealthState StealthState => StateMachine.StealthState;
 
     [SerializeField]
+    TextMeshPro DebugText;
+
+    [SerializeField]
     Animator animator;
     public Animator Animator => animator;
 
@@ -26,6 +30,7 @@ public class EnemyBase : LevelObject, IGasReceiver
     public GameObject Ragdoll => ragdoll;
 
     public Vector3 StartPosition { get; set; }
+    public Quaternion StartRotation { get; set; }
 
     public Vector3 PositionOnGround => transform.position - new Vector3(0, mainCollider.height / 2);
 
@@ -36,12 +41,17 @@ public class EnemyBase : LevelObject, IGasReceiver
         base.Start();
 
         StartPosition = transform.position;
+        StartRotation = transform.rotation;
 
         Level.AddEnemy(this);
 
         mainCollider = GetComponent<CapsuleCollider>();
         rigidbody = GetComponent<Rigidbody>();
         Agent = GetComponent<NavMeshAgent>();
+
+#if !DEBUG
+        Destroy(DebugText);
+#endif
     }
 
     public void EnableRagdoll(bool value)
@@ -75,6 +85,8 @@ public class EnemyBase : LevelObject, IGasReceiver
     protected virtual void Update()
     {
         StateMachine.Update();
+        if (DebugText)
+            DebugText.SetText(StateMachine.CurrentState?.ToString());
         Animator.SetFloat("MoveSpeed", Agent.velocity.magnitude);
     }
 
