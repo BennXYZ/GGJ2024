@@ -7,6 +7,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: BrightWall.png
+    second: {fileID: 2100000, guid: 4375369b19f0e904fb278f089b31ff0b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: vault_texture.png
     second: {fileID: 2100000, guid: 45f92d48d2beccf4bbaa3b8b7acb4fe0, type: 2}
   materials:
