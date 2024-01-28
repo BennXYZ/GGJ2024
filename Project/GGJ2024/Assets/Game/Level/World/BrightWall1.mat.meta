@@ -1,9 +1,8 @@
 fileFormatVersion: 2
-guid: a786be5fa8a4ff941833d7b46f738a4b
-labels:
-- Prop
-PrefabImporter:
+guid: ede47bbdb8c30f24db4bb437a0e980ad
+NativeFormatImporter:
   externalObjects: {}
+  mainObjectFileID: 2100000
   userData: 
   assetBundleName: 
   assetBundleVariant: 
