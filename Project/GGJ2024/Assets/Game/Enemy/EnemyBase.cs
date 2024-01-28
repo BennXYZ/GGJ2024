@@ -21,6 +21,13 @@ public class EnemyBase : LevelObject, IGasReceiver
     public NavMeshAgent Agent { get; private set; }
 
     public EnemyStateMachine StateMachine { get; private set; } = new EnemyStateMachine();
+    [SerializeField]
+    AudioSource laugher;
+
+    public void PlayLaughSound()
+    {
+        laugher.Play();
+    }
 
     public void AttractPeople()
     {

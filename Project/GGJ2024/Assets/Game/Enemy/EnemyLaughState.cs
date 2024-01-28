@@ -19,6 +19,7 @@ public class EnemyLaughState : EnemyState
         (Enemy as GuardEnemy).deathTrigger.SetActive(false);
 
         Enemy.AttractPeople();
+        Enemy.PlayLaughSound();
 
         // TODO: Play laugh animation
     }
