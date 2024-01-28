@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public static class LevelManager
 {
-    static int currentLevel = 1;
-    const int maximalLevel = 1;
+    static int currentLevel = 0;
+    const int maximalLevel = 4;
 
     public static void LoadLevel(int id)
     {

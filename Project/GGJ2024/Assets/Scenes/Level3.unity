@@ -200,6 +200,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WinTrigger
       objectReference: {fileID: 0}
+    - target: {fileID: 3702237716083751621, guid: 34d82fe2fcf2a394ab48753aedb1f774,
+        type: 3}
+      propertyPath: goToFirstScene
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6961309469320670297, guid: 34d82fe2fcf2a394ab48753aedb1f774,
         type: 3}
       propertyPath: m_LocalPosition.x
