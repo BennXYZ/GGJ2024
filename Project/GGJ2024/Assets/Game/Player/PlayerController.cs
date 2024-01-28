@@ -56,7 +56,17 @@ public class PlayerWeapon : PlayerComponent
     [field:SerializeField]
     public Sprite Sprite { get; private set; }
 
+    private void Update()
+    {
+        if (CanFire && Input.GetKeyDown(InputIdentifier))
+            FireWeapon();
+        if (Input.GetKeyUp(InputIdentifier))
+            EndUsingWeapon();
+    }
+
     public virtual void FireWeapon() { }
+
+    public virtual void EndUsingWeapon() { }
 }
 
 public class PlayerCooldownWeapon : PlayerWeapon
@@ -80,7 +90,7 @@ public class PlayerAmmunitionWeapon : PlayerWeapon
     public override WeaponType Type => WeaponType.Ammunition;
 
     [SerializeField]
-    private int ammunition;
+    protected int ammunition;
 
     public override int Ammunition => ammunition;
 

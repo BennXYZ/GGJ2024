@@ -16,17 +16,22 @@ public class GasArea : MonoBehaviour
 
     private void Start()
     {
-        Debug.Assert(particles);
-        Debug.Assert(trigger);
+        //I just want a rectangle-Gas-Area for the Player-Spray...
+        //Debug.Assert(particles);
+        //Debug.Assert(trigger);
     }
 
     public void SetSize(float size)
     {
         Size = size;
 
-        trigger.radius = Size;
-        ParticleSystem.ShapeModule shape = particles.shape;
-        shape.radius = Mathf.Max(0, Size - 0.7f);
+        if(trigger)
+            trigger.radius = Size;
+        if(particles)
+        {
+            ParticleSystem.ShapeModule shape = particles.shape;
+            shape.radius = Mathf.Max(0, Size - 0.7f);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
