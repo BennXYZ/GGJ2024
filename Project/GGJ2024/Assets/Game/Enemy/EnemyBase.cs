@@ -40,8 +40,8 @@ public class EnemyBase : LevelObject, IGasReceiver
 
     private void CheckLocation(Vector3 position)
     {
-        StateMachine.Blackboard.LastKnownLocation = position;
-        Agent.SetDestination(position);
+        AttractionLocation = position;
+        StateMachine.SetState<EnemyInvestigateAttractionState>();
     }
 
     public StealthState StealthState => StateMachine.StealthState;
@@ -67,6 +67,8 @@ public class EnemyBase : LevelObject, IGasReceiver
     public bool InGas => inGasArea.Count > 0;
 
     public Vector3 Position => transform.position;
+
+    public Vector3 AttractionLocation { get; private set; }
 
     protected override void Start()
     {

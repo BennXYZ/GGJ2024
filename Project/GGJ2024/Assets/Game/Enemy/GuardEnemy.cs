@@ -23,6 +23,7 @@ class GuardEnemy : EnemyBase
         StateMachine.AddState<EnemyReturnToRoutineState>();
         StateMachine.AddState<EnemySearchState>();
         StateMachine.AddState<EnemySleepState>();
+        StateMachine.AddState<EnemyInvestigateAttractionState>();
     }
 
     protected override void Start()
