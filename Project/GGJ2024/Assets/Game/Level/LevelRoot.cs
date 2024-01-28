@@ -20,6 +20,16 @@ public class LevelRoot : MonoBehaviour
     private PlayerController player;
     public UnityEvent OnPlayerSet;
 
+    List<GasArea> gasAreas = new List<GasArea>();
+
+    public void AddGasArea(GasArea gasArea)
+    {
+        if (!gasAreas.Contains(gasArea))
+        {
+            gasAreas.Add(gasArea);
+        }
+    }
+
     public List<EnemyBase> Enemies { get; } = new List<EnemyBase>();
 
     public List<IGasReceiver> GasReceivers { get; } = new List<IGasReceiver>();
@@ -27,12 +37,16 @@ public class LevelRoot : MonoBehaviour
     public void AddEnemy(EnemyBase enemyBase)
     {
         if (!Enemies.Contains(enemyBase))
+        {
             Enemies.Add(enemyBase);
+            GasReceivers.Add(enemyBase);
+        }
     }
 
     public void RemoveEnemy(EnemyBase enemyBase)
     {
         Enemies.Remove(enemyBase);
+        GasReceivers.Remove(enemyBase);
     }
 
     public PlayerController Player
@@ -46,6 +60,11 @@ public class LevelRoot : MonoBehaviour
         }
     }
 
+    public void RemoveGasArea(GasArea gasArea)
+    {
+        gasAreas.Remove(gasArea);
+    }
+
     public Blackboard Blackboard { get; private set; } = new Blackboard();
 
     public void AddCoins(int count = 1)
@@ -54,6 +73,25 @@ public class LevelRoot : MonoBehaviour
         OnCoinsCollected.Invoke();
         if (CoinCollectionGoal <= CollectedCoins)
             OnCoinCollectionGoalReached.Invoke();
+    }
+
+    private void Update()
+    {
+        for (int i = 0; i < gasAreas.Count; i++)
+        {
+            GasArea gasArea = gasAreas[i];
+            List<IGasReceiver> inArea = new List<IGasReceiver>();
+            for (int j = 0; j < GasReceivers.Count; j++)
+            {
+                IGasReceiver receiver = GasReceivers[j];
+                float distance = Vector3.Distance(gasArea.transform.position, receiver.Position);
+                if (distance < gasArea.Size)
+                {
+                    inArea.Add(receiver);
+                }
+            }
+            gasArea.SetReceivers(inArea);
+        }
     }
 
     private void Awake()
