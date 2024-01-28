@@ -61,7 +61,8 @@ public class GasArea : MonoBehaviour
 
     private void OnDisable()
     {
-        GameManager.Instance.CurrentLevel.RemoveGasArea(this);
+        if (GameManager.Instance.CurrentLevel)
+            GameManager.Instance.CurrentLevel.RemoveGasArea(this);
         SetReceivers(new List<IGasReceiver>());
     }
 
