@@ -102,7 +102,7 @@ public class PlayerMovement : PlayerComponent
 
     private void FixedUpdate()
     {
-        rigidbody.velocity = Vector3.up * rigidbody.velocity.y + rigidbody.transform.forward * currentNormalizedSpeed.y * movementSpeed + rigidbody.transform.right * currentNormalizedSpeed.x * movementSpeed;
+        rigidbody.velocity = Vector3.up * rigidbody.velocity.y + rotateable.forward * currentNormalizedSpeed.y * movementSpeed + rotateable.right * currentNormalizedSpeed.x * movementSpeed;
         animator.SetFloat("WalkSpeed", currentNormalizedSpeed.magnitude);
         animator.SetFloat("JumpSpeed", isGrounded ? 0 : rigidbody.velocity.y);
     }
