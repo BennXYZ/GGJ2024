@@ -32,7 +32,17 @@ public class PlayerController : LevelObject
         died = true;
         EnableRagdoll(true);
         GetComponent<PlayerMovement>().enabled = false;
+        gameObject.transform.Find("CameraHolder").transform.SetParent(null);
+        gameObject.SetActive(false);
         GameObject.Find("HeadUpDisplay").GetComponent<HeadUpDisplay>().Death();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.name == "Death")
+        {
+            Death();
+        }
     }
 
     public void EnableRagdoll(bool value)
@@ -45,6 +55,7 @@ public class PlayerController : LevelObject
             ragdoll.transform.localRotation = modell.transform.localRotation;
             CopyTransformToRagdoll(modell.transform, ragdoll.transform);
         }
+        ragdoll.transform.SetParent(null);
     }
 
     void CopyTransformToRagdoll(Transform parent, Transform ragdollParent)

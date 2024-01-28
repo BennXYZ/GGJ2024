@@ -14,6 +14,9 @@ class HeadUpDisplay : MonoBehaviour
     [field: SerializeField]
     public WeaponContainer WeaponContainer { get; private set; }
 
+    [SerializeField]
+    GameObject deathUI;
+
     private void Start()
     {
         LevelRoot levelRoot = GameManager.Instance.CurrentLevel;
@@ -31,7 +34,12 @@ class HeadUpDisplay : MonoBehaviour
 
     internal void Death()
     {
-        throw new NotImplementedException();
+        if(!deathUI)
+        {
+            Debug.LogError("DeathUI not attached");
+            return;
+        }
+        deathUI.SetActive(true);
     }
 
     private void PlayerSet()

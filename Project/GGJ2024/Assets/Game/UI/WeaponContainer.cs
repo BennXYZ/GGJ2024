@@ -18,6 +18,8 @@ public class WeaponContainer : MonoBehaviour
             Destroy(transform.GetChild(0).gameObject);
         }
 
+        if (GameManager.Instance.CurrentLevel.Player == null)
+            return;
         IReadOnlyList<PlayerWeapon> weapons = GameManager.Instance.CurrentLevel.Player.Weapons;
         for (int i = 0; i < weapons.Count; i++)
         {

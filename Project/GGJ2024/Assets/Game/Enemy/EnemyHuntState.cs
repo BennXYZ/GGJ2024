@@ -21,7 +21,8 @@
     {
         if (GetEnemy<GuardEnemy>().CanSeePlayer())
         {
-            Blackboard.LastKnownLocation = Blackboard.Player.transform.position;
+            if (Blackboard.Player != null)
+                Blackboard.LastKnownLocation = Blackboard.Player.transform.position;
             Enemy.Agent.SetDestination(Blackboard.LastKnownLocation);
         }
         else
