@@ -36,7 +36,6 @@ public class EnemyStateMachine
     }
 
     public EnemyBase Owner { get; private set; }
-    public EnemyState CurrentState => currentState;
 
     public void Begin<TEnemyState>(EnemyBase owner) where TEnemyState : EnemyState
     {

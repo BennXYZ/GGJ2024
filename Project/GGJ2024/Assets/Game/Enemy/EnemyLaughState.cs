@@ -16,6 +16,7 @@ public class EnemyLaughState : EnemyState
         laughDuration = 1;
         Enemy.Animator.SetFloat("Aggro", 0);
         Enemy.Animator.SetBool("Laughing", true);
+        (Enemy as GuardEnemy).deathTrigger.SetActive(false);
 
         // TODO: Play laugh animation
     }

@@ -11,6 +11,8 @@ class GuardEnemy : EnemyBase
     [field:SerializeField]
     bool debugDrawPath = false;
 
+    public GameObject deathTrigger;
+
     private void Awake()
     {
         StateMachine.AddState<EnemyIdleState>();

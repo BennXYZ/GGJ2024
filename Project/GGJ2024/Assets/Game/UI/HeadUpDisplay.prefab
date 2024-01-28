@@ -140,6 +140,7 @@ GameObject:
   - component: {fileID: 3487637365676079061}
   - component: {fileID: 5434317522495365746}
   - component: {fileID: 2496441021276871083}
+  - component: {fileID: 3561173856304896716}
   m_Layer: 5
   m_Name: Dead
   m_TagString: Untagged
@@ -227,6 +228,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3561173856304896716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2167095374499488503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5173835e253b9c4409d5d8c5abf4fae3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2638273903559447918
 GameObject:
   m_ObjectHideFlags: 0
@@ -908,6 +921,7 @@ MonoBehaviour:
   <CoinCounterDisplay>k__BackingField: {fileID: 8806572555574491267}
   <GoalReachedNotify>k__BackingField: {fileID: 7006105695920712261}
   <WeaponContainer>k__BackingField: {fileID: 1589513457825426400}
+  deathUI: {fileID: 2167095374499488503}
 --- !u!1 &6529287950480225252
 GameObject:
   m_ObjectHideFlags: 0
