@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <SleepParticles>k__BackingField: {fileID: 7429652228261413384}
+  attractionRange: 20
   DebugText: {fileID: 5385064913174268438}
   animator: {fileID: 6432554098637965037}
   ragdoll: {fileID: 7858779818942862605}

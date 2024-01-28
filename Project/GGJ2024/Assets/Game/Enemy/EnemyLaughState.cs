@@ -18,6 +18,8 @@ public class EnemyLaughState : EnemyState
         Enemy.Animator.SetBool("Laughing", true);
         (Enemy as GuardEnemy).deathTrigger.SetActive(false);
 
+        Enemy.AttractPeople();
+
         // TODO: Play laugh animation
     }
 

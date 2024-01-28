@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -11,12 +12,31 @@ public class EnemyBase : LevelObject, IGasReceiver
     [field:SerializeField]
     public ParticleSystem SleepParticles { get; private set; }
 
+    [SerializeField]
+    protected float attractionRange;
+
     private CapsuleCollider mainCollider;
     private new Rigidbody rigidbody;
 
     public NavMeshAgent Agent { get; private set; }
 
     public EnemyStateMachine StateMachine { get; private set; } = new EnemyStateMachine();
+
+    public void AttractPeople()
+    {
+        foreach(EnemyBase enemy in Level.Enemies)
+        {
+            if(Vector3.Distance(transform.position, enemy.transform.position) < attractionRange)
+                enemy.CheckLocation(transform.position);
+        }
+    }
+
+    private void CheckLocation(Vector3 position)
+    {
+        StateMachine.Blackboard.LastKnownLocation = position;
+        Agent.SetDestination(position);
+    }
+
     public StealthState StealthState => StateMachine.StealthState;
 
     [SerializeField]
