@@ -18,6 +18,8 @@ public class GasArea : MonoBehaviour
     float duration;
     float startTime;
 
+    List<IGasReceiver> currentReceivers = new List<IGasReceiver>();
+
     private void Start()
     {
         //I just want a rectangle-Gas-Area for the Player-Spray...
@@ -28,6 +30,9 @@ public class GasArea : MonoBehaviour
 
     private void Update()
     {
+        if (!trigger)
+            return;
+
         if (Time.time < startTime + duration)
             return;
 
@@ -55,11 +60,20 @@ public class GasArea : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        for (int i = 0; i < currentReceivers.Count; i++)
+        {
+            currentReceivers[i].ExitedGasArea(this);
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         IGasReceiver gasReceiver = other.gameObject.GetComponent<IGasReceiver>();
         if (gasReceiver != null)
         {
+            currentReceivers.Add(gasReceiver);
             gasReceiver.EnteredGasArea(this);
         }
     }
@@ -69,6 +83,7 @@ public class GasArea : MonoBehaviour
         IGasReceiver gasReceiver = other.gameObject.GetComponent<IGasReceiver>();
         if (gasReceiver != null)
         {
+            currentReceivers.Remove(gasReceiver);
             gasReceiver.ExitedGasArea(this);
         }
     }

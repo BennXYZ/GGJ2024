@@ -27,6 +27,7 @@ class GameManager : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
         instance.GameSettings = Resources.Load<GlobalGameSettings>("GameSettings");
         Debug.Assert(instance.GameSettings, @"No prefab named ""GameSettings"" found in the Resources folder.");
+        Cursor.lockState = CursorLockMode.Confined;
     }
 
     private void Start()
