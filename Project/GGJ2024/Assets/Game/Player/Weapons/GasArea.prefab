@@ -48,8 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particles: {fileID: 5653244380323524716}
-  trigger: {fileID: 7230352201926562440}
   <Size>k__BackingField: 3.81
+  isPlayerWeapon: 0
   duration: 3
 --- !u!135 &7230352201926562440
 SphereCollider:
