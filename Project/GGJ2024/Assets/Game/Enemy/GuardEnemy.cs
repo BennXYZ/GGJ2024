@@ -57,5 +57,8 @@ class GuardEnemy : EnemyBase
                 }
             }
         }
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, attractionRange);
     }
 }
