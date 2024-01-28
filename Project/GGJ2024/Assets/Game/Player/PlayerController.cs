@@ -53,7 +53,7 @@ public class PlayerWeapon : PlayerComponent
 
     public virtual KeyCode InputIdentifier => KeyCode.None;
 
-    [SerializeField]
+    [field:SerializeField]
     public Sprite Sprite { get; private set; }
 
     public virtual void FireWeapon() { }

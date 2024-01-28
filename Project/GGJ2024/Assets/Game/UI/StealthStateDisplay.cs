@@ -6,26 +6,26 @@ public class StealthStateDisplay : MonoBehaviour
     [SerializeField]
     private Image display;
 
-    [Header("Colors")]
+    [Header("Icons")]
     [SerializeField]
-    private Color idle;
+    private Sprite idle;
     [SerializeField]
-    private Color searching;
+    private Sprite searching;
     [SerializeField]
-    private Color alert;
+    private Sprite alert;
 
     public void SetStealthState(StealthState stealthState)
     {
         switch (stealthState)
         {
             case StealthState.Idle:
-                display.color = idle;
+                display.sprite = idle;
                 break;
             case StealthState.Searching:
-                display.color = searching;
+                display.sprite = searching;
                 break;
             case StealthState.Alert:
-                display.color = alert;
+                display.sprite = alert;
                 break;
         }
     }
