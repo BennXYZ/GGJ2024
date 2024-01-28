@@ -11,6 +11,9 @@ class HeadUpDisplay : MonoBehaviour
     [field:SerializeField]
     public GoalReachedNotify GoalReachedNotify { get; private set; }
 
+    [field: SerializeField]
+    public WeaponContainer WeaponContainer { get; private set; }
+
     private void Start()
     {
         LevelRoot levelRoot = GameManager.Instance.CurrentLevel;
@@ -20,6 +23,8 @@ class HeadUpDisplay : MonoBehaviour
         CoinCounterDisplay.SetRequiredCount(levelRoot.CoinCollectionGoal);
         CoinCounterDisplay.SetOwnedCount(levelRoot.CollectedCoins);
         StealthStateDisplay.SetStealthState(StealthState.Idle);
+
+        WeaponContainer.RefreshWeapons();
     }
 
     private void GoalReached()
