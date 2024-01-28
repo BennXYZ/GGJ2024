@@ -14,11 +14,32 @@ public class GasArea : MonoBehaviour
     [field:SerializeField]
     public float Size { get; private set; }
 
+    [SerializeField]
+    float duration;
+    float startTime;
+
     private void Start()
     {
         //I just want a rectangle-Gas-Area for the Player-Spray...
         //Debug.Assert(particles);
         //Debug.Assert(trigger);
+        startTime = Time.time;
+    }
+
+    private void Update()
+    {
+        if (Time.time < startTime + duration)
+            return;
+
+        if (trigger.enabled)
+            trigger.enabled = false;
+
+        particles.Stop();
+
+        if (Time.time < startTime + duration + particles.main.startLifetime.constant)
+            return;
+
+        Destroy(gameObject);
     }
 
     public void SetSize(float size)
