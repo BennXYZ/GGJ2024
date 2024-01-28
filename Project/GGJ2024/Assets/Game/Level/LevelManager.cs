@@ -11,7 +11,7 @@ public static class LevelManager
     public static void LoadLevel(int id)
     {
         currentLevel = Mathf.Clamp(id, 0, maximalLevel);
-        SceneManager.LoadScene("Level" + id);
+        SceneManager.LoadScene(id);
     }
 
     public static void ReloadLevel()
