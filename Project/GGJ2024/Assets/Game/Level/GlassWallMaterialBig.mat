@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BrightWall
-  m_Shader: {fileID: -6465566751694194690, guid: 4b73e635cce65734eb4974ffad8508b2,
+  m_Name: GlassWallMaterialBig
+  m_Shader: {fileID: -6465566751694194690, guid: dc7c75b7414054440b99975056be8943,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -67,7 +67,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTexture:
-        m_Texture: {fileID: 2800000, guid: ad9ab7b65cc4cb54b9311f52e3d38fb1, type: 3}
+        m_Texture: {fileID: 2800000, guid: ecd0f34ab958b0246a7ead47b0233444, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
