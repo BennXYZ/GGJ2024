@@ -364,7 +364,7 @@ GameObject:
   - component: {fileID: 8729593815255556286}
   - component: {fileID: 3529689965946233731}
   - component: {fileID: 9220986719961976065}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GasSprayArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
