@@ -130,6 +130,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7858a05aec9db044f95175c6219e903d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ragdoll: {fileID: 6190293635976640863}
+  modell: {fileID: 1593267962466368432}
 --- !u!114 &8352776929237318713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,10 +162,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Sprite>k__BackingField: {fileID: -1109932816, guid: 00853b7359f86614aaa2595a8ec71587,
     type: 3}
-  ammunition: 2
+  ammunition: 5
   bombPrefab: {fileID: 4749834101336530114, guid: 69f68d4e3046fd746b5678995cd95359,
     type: 3}
-  throwStrength: 666
+  throwStrength: 500
 --- !u!114 &-7889364367980232445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6723,6 +6725,12 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!1 &6190293635976640863 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 924aac6aac395e14fb1591450eb39729,
+    type: 3}
+  m_PrefabInstance: {fileID: 6424735141543969806}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6526696972054315258 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 268600531463226612, guid: 924aac6aac395e14fb1591450eb39729,

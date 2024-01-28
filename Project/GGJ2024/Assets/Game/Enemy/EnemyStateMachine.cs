@@ -26,6 +26,8 @@ public class EnemyStateMachine
     Dictionary<Type, EnemyState> availableStates = new Dictionary<Type, EnemyState>();
     EnemyState currentState;
 
+    public EnemyState CurrentState => currentState;
+
     public StealthState StealthState => currentState?.StealthState ?? StealthState.Idle;
 
     public bool MaySeePlayer()
@@ -34,7 +36,6 @@ public class EnemyStateMachine
     }
 
     public EnemyBase Owner { get; private set; }
-    public EnemyState CurrentState => currentState;
 
     public void Begin<TEnemyState>(EnemyBase owner) where TEnemyState : EnemyState
     {

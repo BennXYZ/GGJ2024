@@ -20,7 +20,7 @@ public class EnemySleepState : EnemyState
         Enemy.SleepParticles.Stop();
         Enemy.Agent.isStopped = false;
         Enemy.EnableRagdoll(false);
-
+        (Enemy as GuardEnemy).deathTrigger.SetActive(true);
     }
 
     public override void Update()
