@@ -33,8 +33,8 @@ public class PlayerMovement : PlayerComponent
     {
         if(!rigidbody)
             rigidbody = GetComponent<Rigidbody>();
-        if(!cameraHolder)
-            cameraHolder = transform.Find("CameraHolder");
+        if (!cameraHolder)
+            cameraHolder = GetComponentInChildren<CameraHolder>().transform;
     }
 
     // Start is called before the first frame update

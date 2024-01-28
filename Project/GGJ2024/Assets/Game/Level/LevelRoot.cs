@@ -19,6 +19,7 @@ public class LevelRoot : MonoBehaviour
     public UnityEvent OnStealthStateChanged;
     private PlayerController player;
     public UnityEvent OnPlayerSet;
+    public UnityEvent OnPlayerDied;
 
     List<GasArea> gasAreas = new List<GasArea>();
 
@@ -31,6 +32,11 @@ public class LevelRoot : MonoBehaviour
     }
 
     public List<EnemyBase> Enemies { get; } = new List<EnemyBase>();
+
+    public void PlayerDied()
+    {
+        OnPlayerDied.Invoke();
+    }
 
     public List<IGasReceiver> GasReceivers { get; } = new List<IGasReceiver>();
 

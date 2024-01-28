@@ -275,6 +275,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3336545593903208886}
+  - component: {fileID: 6920837232791537427}
   m_Layer: 0
   m_Name: CameraHolder
   m_TagString: Untagged
@@ -298,6 +299,18 @@ Transform:
   - {fileID: 4891735149757218192}
   m_Father: {fileID: 1627636440962381661}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6920837232791537427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2690890001130677194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 584ee443d1947dc43a7d4ae866059ce0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3387374654115769428
 GameObject:
   m_ObjectHideFlags: 0

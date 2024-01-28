@@ -32,14 +32,14 @@ public class PlayerController : LevelObject
         died = true;
         EnableRagdoll(true);
         GetComponent<PlayerMovement>().enabled = false;
-        gameObject.transform.Find("CameraHolder").transform.SetParent(null);
+        GetComponentInChildren<CameraHolder>().transform.SetParent(null);
         gameObject.SetActive(false);
-        GameObject.Find("HeadUpDisplay").GetComponent<HeadUpDisplay>().Death();
+        Level.PlayerDied();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.name == "Death")
+        if (other.CompareTag("Death"))
         {
             Death();
         }
@@ -110,7 +110,7 @@ public class PlayerWeapon : PlayerComponent
 
     public virtual KeyCode InputIdentifier => KeyCode.None;
 
-    [field:SerializeField]
+    [field: SerializeField]
     public Sprite Sprite { get; private set; }
 
     private void Update()

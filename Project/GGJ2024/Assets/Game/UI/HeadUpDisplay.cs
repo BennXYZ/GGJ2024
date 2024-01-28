@@ -24,6 +24,7 @@ class HeadUpDisplay : MonoBehaviour
         levelRoot.OnCoinsCollected.AddListener(CoinsCollected);
         levelRoot.OnCoinCollectionGoalReached.AddListener(GoalReached);
         levelRoot.OnPlayerSet.AddListener(PlayerSet);
+        levelRoot.OnPlayerDied.AddListener(PlayerDied);
         CoinCounterDisplay.SetRequiredCount(levelRoot.CoinCollectionGoal);
         CoinCounterDisplay.SetOwnedCount(levelRoot.CollectedCoins);
         StealthStateDisplay.SetStealthState(StealthState.Idle);
@@ -32,7 +33,7 @@ class HeadUpDisplay : MonoBehaviour
             PlayerSet();
     }
 
-    internal void Death()
+    public void PlayerDied()
     {
         if(!deathUI)
         {
