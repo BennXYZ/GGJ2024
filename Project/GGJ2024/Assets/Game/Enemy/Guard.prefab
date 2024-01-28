@@ -102,12 +102,9 @@ MonoBehaviour:
   DebugText: {fileID: 5385064913174268438}
   animator: {fileID: 6432554098637965037}
   ragdoll: {fileID: 7858779818942862605}
-  <Path>k__BackingField:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  <Path>k__BackingField: []
   debugDrawPath: 1
+  deathTrigger: {fileID: 7929787844468895290}
 --- !u!114 &5540215953587645542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,7 +156,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2036049314835611479}
   - component: {fileID: 8598603494146209340}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Death
   m_TagString: Untagged
   m_Icon: {fileID: 0}
