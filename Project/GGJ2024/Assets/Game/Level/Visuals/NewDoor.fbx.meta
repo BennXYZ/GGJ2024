@@ -1,19 +1,9 @@
 fileFormatVersion: 2
-guid: 4f9afb8dc0699e344b2b934dd818f67a
+guid: 78caf996fd9ddc34c9ef59b060e60aaa
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: bomb_texture.png
-    second: {fileID: 2100000, guid: 99a95ac8864e71f4ea4fcb07f5137d9f, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: m_3a674db1-8633-b6c9-2c18-c7a4f4758ef6
-    second: {fileID: 2100000, guid: 99a95ac8864e71f4ea4fcb07f5137d9f, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
