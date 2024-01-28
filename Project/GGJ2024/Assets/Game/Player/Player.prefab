@@ -161,6 +161,8 @@ MonoBehaviour:
   <Sprite>k__BackingField: {fileID: -1109932816, guid: 00853b7359f86614aaa2595a8ec71587,
     type: 3}
   ammunition: 2
+  bombPrefab: {fileID: 0}
+  throwStrength: 0
 --- !u!114 &-7889364367980232445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,8 +255,8 @@ Camera:
   m_GameObject: {fileID: 3387374654115769428}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.6745283, g: 0.878162, b: 1, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -438,6 +440,7 @@ MonoBehaviour:
   particles: {fileID: 0}
   trigger: {fileID: 0}
   <Size>k__BackingField: 0
+  duration: 0
 --- !u!1 &5668846674613884969
 GameObject:
   m_ObjectHideFlags: 0
